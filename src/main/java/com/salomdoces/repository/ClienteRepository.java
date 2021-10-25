@@ -11,6 +11,6 @@ import java.util.Optional;
 // Extendendo JPARepository
 public interface ClienteRepository extends JpaRepository<Cliente,Long> {
     // Sobreescrevendo método findBy para pesquisar usuário (e-mail do cliente)
-    public Optional<Cliente> findByEmail(String usuario);
+    public Optional<Cliente> findByEmail(String email);
 
 }

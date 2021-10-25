@@ -11,12 +11,12 @@ import java.util.List;
 // Necessário serializar a classe para que os dados
 // sejam trocadas de forma binária (e não objetos Java)
 
-// Tornando a classe uma entidade gerenciavel
+// Tornando a classe uma entidade gerenciável
 // Esta entidade se tornará uma tabela no database
 @Entity
 // Definindo o nome da entidade como "cliente" no banco de dados
 @Table(name="cliente")
-public class Cliente implements Serializable {
+public class Cliente implements Serializable  {
 
     // Atributos encapsulados da classe
 
@@ -31,7 +31,6 @@ public class Cliente implements Serializable {
     @NotNull
     private String nome;
     // Configurando campo para não aceitar valores nulos
-    @NotNull
     private String cpf;
     // endereco: Será um atributo multivalorado do tipo Endereco
     // Definindo cardinalidade (um cliente pode ter muitos endereços e telefones)

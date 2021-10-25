@@ -20,6 +20,7 @@ public class Telefone {
     @Id
     // Configurando a Chave Primária (PK)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
     // Definindo cardinalidade (um cliente pode ter muitos endereços e telefones)
     // Relacionamento mapeado pelo nome da tabela na entidade Cliente
