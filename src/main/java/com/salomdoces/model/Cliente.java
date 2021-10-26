@@ -48,7 +48,6 @@ public class Cliente implements Serializable  {
     // Configurando campos para não aceitar valores nulos
     @NotNull
     private String email;
-    @NotNull
     private String senha;
 
     // Construtor padrão
