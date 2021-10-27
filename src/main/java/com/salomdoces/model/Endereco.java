@@ -27,7 +27,7 @@ public class Endereco {
     // os endereços e telefones associados também serão
     @ManyToOne
     // Ignora recursividade
-    @JsonIgnoreProperties("cliente")
+    @JsonIgnoreProperties({"telefone","endereco"})
     // Configurando campo para não aceitar valores nulos: endereço sempre será associado a um cliente
     @NotNull
     private Cliente cliente;
@@ -42,7 +42,6 @@ public class Endereco {
     // Configurando campo para não aceitar valores nulos
     @NotNull
     private String cep;
-
     // Tipo de telefone: cadastral, entrega, cobrança
     // Configurando campo para não aceitar valores nulos
     @NotNull
