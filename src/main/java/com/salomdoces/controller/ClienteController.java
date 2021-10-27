@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 // Definindo a classe como um controller
@@ -33,10 +34,16 @@ public class ClienteController {
     // RequestBody: JSON entrando via requisição
     // Parâmetro usuário recebendo nome, e-mail e senha
     public ResponseEntity<Cliente> post(@RequestBody Cliente usuario) {
-        // Chamando o Service para cadastrar o usuário
-        // Tendo sucesso, retornar resposta HTTP 201 (Created)
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(clienteService.cadastrarUsuario(usuario));
+        // Pesquisar se o e-mail já está cadastrado
+        Optional<Cliente> usuarioCadastrado = clienteRepository.findByEmail(usuario.getEmail());
+        if(usuarioCadastrado.isPresent()) {
+            return ResponseEntity.status(HttpStatus.FOUND).build();
+        } else {
+            // Chamando o Service para cadastrar o usuário
+            // Tendo sucesso, retornar resposta HTTP 201 (Created)
+            return ResponseEntity.status(HttpStatus.CREATED)
+                    .body(clienteService.cadastrarUsuario(usuario));
+        }
     }
 
     // Usuário: efetuar login
@@ -52,8 +59,50 @@ public class ClienteController {
     // Atualizando Usuário
     @PutMapping("/atualizar")
     public ResponseEntity<Cliente> put(@RequestBody Cliente cliente) {
-        // Chamando o repository para salvar o Cliente/Usuário editado
-        // Informando o status da atualização como OK
-        return ResponseEntity.status(HttpStatus.OK).body(clienteRepository.save(cliente));
+        // Pesquisar pelo Cliente que está tentando atualizar
+        Optional<Cliente> clienteAtualizar = clienteRepository.findByEmail(cliente.getEmail());
+        if (clienteAtualizar.isPresent()) {
+            cliente.setId(clienteAtualizar.get().getId());
+            cliente.setSenha(clienteAtualizar.get().getSenha());
+            // Chamando o repository para salvar o Cliente/Usuário editado
+            // Informando o status da atualização como OK
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body(clienteRepository.save(cliente));
+        }
+        // Cliente não encontrado. Abortar atualização.
+        // Retornar HTTP Status 404 (Recurso não encontrado)
+        return ResponseEntity.notFound().build();
     }
+
+    // Consultar Cliente por e-mail
+    // Criando método para responder o verbo Get
+    // passando o email informado como parâmetro de entrada
+    @GetMapping("/consultar/{email}")
+    public ResponseEntity<Cliente> getByEmail(@PathVariable String email) {
+        // Chamando método findBy do repository para efetuar a pesquisa
+        // retornando o resultado via mapeamento da resposta OK ou NotFound
+        return clienteRepository.findByEmail(email)
+                .map(resp -> ResponseEntity.ok(resp))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // Consultar Cliente por e-mail
+    // Criando método para responder o verbo Get
+    // passando o email informado como parâmetro de entrada
+    @GetMapping("/consultar/id/{id}")
+    public ResponseEntity<Cliente> getById(@PathVariable Long id) {
+        return clienteRepository.findById(id)
+                .map(resp -> ResponseEntity.ok(resp))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    // Construir Get para todos os registros
+    @GetMapping("/consultar/todos")
+    public ResponseEntity<List<Cliente>> getAll() {
+        // Retornar lista de Clientes
+        // Retorna [] caso tabela vazia
+        return ResponseEntity.ok(clienteRepository.findAll());
+    }
+
+
 }

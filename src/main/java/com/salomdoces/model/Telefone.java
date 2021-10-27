@@ -28,7 +28,7 @@ public class Telefone {
     // os endereços e telefones associados também serão
     @ManyToOne
     // Ignora recursividade
-    @JsonIgnoreProperties("cliente")
+    @JsonIgnoreProperties({"telefone","endereco"})
     // Configurando campo para não aceitar valores nulos: telefone sempre será associado a um cliente
     @NotNull
     private Cliente cliente;
