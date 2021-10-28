@@ -61,6 +61,11 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
 
 	</dependencies>
 
@@ -87,7 +92,6 @@
 				<artifactId>heroku-maven-plugin</artifactId>
 				<version>3.0.3</version>
 				<configuration>
-					<appName>sushi</appName>
 					<processTypes>
 						<web>java $JAVA_OPTS -cp target/classes:target/dependency/* Main</web>
 					</processTypes>
