@@ -14,6 +14,7 @@ import javax.mail.internet.InternetAddress;
 import java.util.List;
 import java.util.Optional;
 
+
 // Definindo a classe como um controller
 @RestController
 // Mapeando o End Point Usuário
@@ -67,24 +68,31 @@ public class ClienteController {
     // Atualizando Usuário
     @PutMapping("/atualizar")
     public ResponseEntity<Cliente> put(@RequestBody Cliente cliente) {
-        // Validar o e-mail recebido via JSON
-        if(isEmailValido(cliente.getEmail())) {
-            // Email informado é válido
-            // Pesquisar pelo Cliente que está tentando atualizar
-            Optional<Cliente> clienteAtualizar = clienteRepository.findByEmail(cliente.getEmail());
-            if (clienteAtualizar.isPresent()) {
-                cliente.setId(clienteAtualizar.get().getId());
-                cliente.setSenha(clienteAtualizar.get().getSenha());
-                // Chamando o repository para salvar o Cliente/Usuário editado
-                // Informando o status da atualização como OK
-                return ResponseEntity.status(HttpStatus.OK)
-                        .body(clienteRepository.save(cliente));
-            }
-            // Cliente não encontrado. Abortar atualização.
-            // Retornar HTTP Status 404 (Recurso não encontrado)
-            return ResponseEntity.notFound().build();
-        } // Se e-mail inválido
+        try {
+            // Validar o e-mail recebido via JSON
+            if (isEmailValido(cliente.getEmail())) {
+                // Email informado é válido
+                // Pesquisar pelo Cliente que está tentando atualizar
+                Optional<Cliente> clienteAtualizar = clienteRepository.findByEmail(cliente.getEmail());
+                if (clienteAtualizar.isPresent()) {
+                    cliente.setId(clienteAtualizar.get().getId());
+                    cliente.setSenha(clienteAtualizar.get().getSenha());
+                    // Chamando o repository para salvar o Cliente/Usuário editado
+                    // Informando o status da atualização como OK
+                    return ResponseEntity.status(HttpStatus.OK)
+                            .body(clienteRepository.save(cliente));
+                }
+                // Cliente não encontrado. Abortar atualização.
+                // Retornar HTTP Status 404 (Recurso não encontrado)
+                return ResponseEntity.notFound().build();
+            } // Se e-mail inválido
+        }catch(Exception e){
+
+            e.printStackTrace();
+        }
         return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
+
+
     }
 
     // Consultar Cliente por e-mail
