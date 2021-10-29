@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+
+
 // Tornando a classe uma entidade gerenciavel
 // Esta entidade se tornará uma tabela no database
 @Entity
@@ -26,13 +28,13 @@ public class Telefone {
     // Relacionamento mapeado pelo nome da tabela na entidade Cliente
     // Integridade referencial: quando um cliente é excluído,
     // os endereços e telefones associados também serão
-    @ManyToOne
-    // Ignora recursividade
-    @JsonIgnoreProperties({"telefone","endereco"})
-    // Configurando campo para não aceitar valores nulos: telefone sempre será associado a um cliente
-    @NotNull
-    private Cliente cliente;
-    // Configurando campo para não aceitar valores nulos
+//    @ManyToOne
+//    // Ignora recursividade
+//    @JsonIgnoreProperties("cliente")
+//    // Configurando campo para não aceitar valores nulos: telefone sempre será associado a um cliente
+//    @NotNull
+//    private Cliente cliente;
+//    // Configurando campo para não aceitar valores nulos
     @NotNull
     private String ddd;
     // Configurando campo para não aceitar valores nulos
@@ -55,13 +57,13 @@ public class Telefone {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+//    public Cliente getCliente() {
+//        return cliente;
+//    }
+//
+//    public void setCliente(Cliente cliente) {
+//        this.cliente = cliente;
+//    }
 
     public String getDdd() {
         return ddd;

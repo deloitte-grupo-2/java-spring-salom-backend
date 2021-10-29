@@ -1,5 +1,6 @@
 package com.salomdoces.service;
 
+
 import com.salomdoces.model.Cliente;
 import com.salomdoces.model.ClienteLogin;
 import com.salomdoces.repository.ClienteRepository;
@@ -9,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
 // Tornando esta classe um Service

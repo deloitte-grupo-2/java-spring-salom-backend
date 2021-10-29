@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+
 // Tornando a classe uma entidade gerenciavel
 // Esta entidade se tornará uma tabela no database
 @Entity
@@ -25,13 +26,14 @@ public class Endereco {
     // Relacionamento mapeado pelo nome da tabela na entidade Cliente
     // Integridade referencial: quando um cliente é excluído,
     // os endereços e telefones associados também serão
-    @ManyToOne
-    // Ignora recursividade
-    @JsonIgnoreProperties({"telefone","endereco"})
-    // Configurando campo para não aceitar valores nulos: endereço sempre será associado a um cliente
-    @NotNull
-    private Cliente cliente;
-    // Configurando campo para não aceitar valores nulos
+//    @ManyToOne
+////    // Ignora recursividade
+//    @JsonIgnoreProperties("cliente")
+//    // Configurando campo para não aceitar valores nulos: endereço sempre será associado a um cliente
+//    @NotNull
+//    @JoinColumn(name = "id_cliente")
+//    private Cliente cliente;
+//    // Configurando campo para não aceitar valores nulos
     @NotNull
     private String logradouro;
     // Configurando campo para não aceitar valores nulos
@@ -48,24 +50,27 @@ public class Endereco {
     private String tipo;
 
     // Construtor padrão
-    public Endereco() { }
+    public Endereco() {
+    }
 
     // Getters e Setters
     public Long getId() {
         return id;
     }
 
+//    public Cliente getCliente() {
+//        return cliente;
+//    }
+//
+//    public void setCliente(Cliente cliente) {
+//        this.cliente = cliente;
+//    }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Cliente getCliente() {
-        return cliente;
-    }
 
-    public void setCliente(Cliente idCliente) {
-        this.cliente = idCliente;
-    }
 
     public String getLogradouro() {
         return logradouro;

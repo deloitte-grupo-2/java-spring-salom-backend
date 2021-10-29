@@ -37,11 +37,12 @@ public class Cliente implements Serializable  {
     // Relacionamento mapeado pelo nome da tabela
     // Integridade referencial: quando um cliente é excluído,
     // os endereços e telefones associados também serão
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+//
+    @OneToMany (cascade = CascadeType.ALL)
     @JsonIgnoreProperties("cliente")
     private List<Endereco> endereco;
     // telefone: Será um atributo multivalorado do tipo Telefone
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnoreProperties("cliente")
     private List<Telefone> telefone;
     // Configurando campos para usuário
@@ -110,4 +111,18 @@ public class Cliente implements Serializable  {
         this.senha = senha;
     }
 
+    //A validacao de email foi feita em ClienteController
+//    // Métodos da classe
+//    public void validarEmail(String email) {
+//        // Regra de negócio: Validação do e-mail
+//        // Exemplo:
+//        // 1) iniciar com 1 caracter alfanúmérico
+//        // 2) Conter @
+//        // 3) Conter 1 caracter alfanúmérico após @
+//        // 4) Conter 1 ponto (".")
+//        // 5) Conter 1 caracter alfanúmérico após ponto
+//        // Resultado: a@b.c
+//
+//        this.setEmail(email);
+//    }
 }

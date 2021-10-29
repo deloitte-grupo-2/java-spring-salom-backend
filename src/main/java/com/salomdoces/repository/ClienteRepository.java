@@ -6,11 +6,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+
 // Definindo a interface como um Repository
 @Repository
 // Extendendo JPARepository
 public interface ClienteRepository extends JpaRepository<Cliente,Long> {
-    // Sobreescrevendo método findBy para pesquisar usuário (e-mail do cliente)
-    public Optional<Cliente> findByEmail(String email);
+        // Sobreescrevendo método findBy para pesquisar usuário (e-mail do cliente)
+        public Optional<Cliente> findByEmail(String email);
 
 }
