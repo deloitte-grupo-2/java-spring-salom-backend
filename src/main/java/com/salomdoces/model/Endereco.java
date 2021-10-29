@@ -26,14 +26,10 @@ public class Endereco {
     // Relacionamento mapeado pelo nome da tabela na entidade Cliente
     // Integridade referencial: quando um cliente é excluído,
     // os endereços e telefones associados também serão
-//    @ManyToOne
-////    // Ignora recursividade
-//    @JsonIgnoreProperties("cliente")
-//    // Configurando campo para não aceitar valores nulos: endereço sempre será associado a um cliente
-//    @NotNull
-//    @JoinColumn(name = "id_cliente")
-//    private Cliente cliente;
-//    // Configurando campo para não aceitar valores nulos
+    // Ignora recursividade
+    // Configurando campo para não aceitar valores nulos: endereço sempre será associado a um cliente
+
+    // Configurando campo para não aceitar valores nulos
     @NotNull
     private String logradouro;
     // Configurando campo para não aceitar valores nulos
