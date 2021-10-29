@@ -4,9 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 
 @Entity
+@JsonIgnoreProperties("pedido")
 @Table(name="produto")
 public class Produto {
 
@@ -14,22 +16,20 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @Column(name="nome")
     private String nome;
 
-    @NotNull
+    @Column(name="preco")
     private Double preco;
 
-    @NotNull
+    @Column(name="descricao")
     private String descricao;
 
-    @NotNull
+    @Column(name="imagemUrl")
     private String imagemUrl;
 
-    @ManyToOne
-    @JsonIgnoreProperties({"produto"})
-    @NotNull
-    private Pedido pedido;
+    @ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="produtos")
+    private List<Pedido> pedidos;
 
     public Produto() {
     }
@@ -74,11 +74,11 @@ public class Produto {
         this.imagemUrl = imagemUrl;
     }
 
-    public Pedido getPedido() {
-        return pedido;
+    public List<Pedido> getPedidos() {
+        return pedidos;
     }
 
-    public void setPedido(Pedido pedido) {
-        this.pedido = pedido;
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 }

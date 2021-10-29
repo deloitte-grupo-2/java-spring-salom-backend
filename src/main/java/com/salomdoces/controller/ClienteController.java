@@ -4,6 +4,7 @@ import com.salomdoces.model.Cliente;
 import com.salomdoces.model.ClienteLogin;
 import com.salomdoces.repository.ClienteRepository;
 import com.salomdoces.service.ClienteService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+@Api(value="Cliente Endpoint", tags={"Cliente Endpoint"})
 // Definindo a classe como um controller
 @RestController
 // Mapeando o End Point Usuário

@@ -10,6 +10,7 @@ import java.util.List;
 
 
 @Entity
+@JsonIgnoreProperties("produto")
 @Table(name="pedido")
 public class Pedido {
 
@@ -17,27 +18,26 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    @Column(name="forma_pagamento")
     private String formaPagamento;
 
-    @NotNull
+    @Column(name="status")
     private String status;
 
-    @NotNull
+    @Column(name="data_encomenda")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataEncomenda = new java.sql.Date(System.currentTimeMillis());
 
-    @NotNull
+    @Column(name="data_entrega")
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataEntrega;
 
     @ManyToOne
-    @JsonIgnoreProperties({"telefone","endereco"})
-    @NotNull
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("pedido")
+    @ManyToMany(fetch= FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinTable(name="pedidos_produtos", joinColumns = {@JoinColumn(name="pedido_id")},
+            inverseJoinColumns = {@JoinColumn(name="produto_id")})
     private List<Produto> produtos;
 
     public Pedido() {
