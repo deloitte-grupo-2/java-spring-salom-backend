@@ -51,6 +51,10 @@ public class Cliente implements Serializable  {
     private String email;
     private String senha;
 
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("cliente")
+    private List<Pedido> pedidos;
+
     // Construtor padrão
     public Cliente() { }
 
@@ -109,6 +113,14 @@ public class Cliente implements Serializable  {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(List<Pedido> pedidos) {
+        this.pedidos = pedidos;
     }
 
     //A validacao de email foi feita em ClienteController
