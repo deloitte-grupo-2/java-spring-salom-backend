@@ -43,7 +43,7 @@ public class Pedido {
     //Um pedido pode ter muitos produtos, e um produto pode estar em vários pedidos
     //Fetch informa a forma pela qual os dados serão carregados do banco
     //Fetch Eager carrega os dados do banco independete se serão utilizados no momento
-    //Cascade molda o comportamento entre pai e filho. A operação feita no pai, passa para o filho
+
     //Merge é uma operação que copia um estado de um objeto para o objeto persistente com mesmo identificador
 
     //InverseJoinColumn customiza o nome da coluna na tabela da variável de referência de classe associada
