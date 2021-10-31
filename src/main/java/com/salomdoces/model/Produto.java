@@ -28,6 +28,10 @@ public class Produto {
     @Column(name="imagemUrl")
     private String imagemUrl;
 
+
+    //Um pedido pode ter muitos produtos, e um produto pode estar em vários pedidos
+    //Fetch informa a forma pela qual os dados serão carregados do banco
+    //Fetch Lazy carrega os dados do banco apenas quando eles são explicitamente pedidos
     @ManyToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, mappedBy="produtos")
     private List<Pedido> pedidos;
 
