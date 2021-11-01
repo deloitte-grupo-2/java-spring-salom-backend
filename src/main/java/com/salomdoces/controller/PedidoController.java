@@ -11,13 +11,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Api(value="Pedido Endpoint", tags={"Pedido Endpoint"})
 @RestController
 @RequestMapping("/pedido")
 @CrossOrigin(origins = "*",allowedHeaders = "*")
-
 public class PedidoController {
 
     @Autowired
@@ -27,15 +27,27 @@ public class PedidoController {
     private PedidoRepository pedidoRepository;
 
 
-//    @GetMapping("/consultar")
-//    public ResponseEntity<List<Pedido>> getAll() {
-//        return ResponseEntity.ok(pedidoRepository.findAll());
-//    }
-
+    @GetMapping("/consultar")
+    public ResponseEntity<List<Pedido>> consultarTodos() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(pedidoRepository.findAll());
+    }
 
     @PostMapping("/criar")
-    public ResponseEntity<Pedido> post(@RequestBody Pedido pedido){
+    public ResponseEntity<Pedido> criar(@RequestBody Pedido pedido){
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(pedidoService.criarPedido(pedido));
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public ResponseEntity<Pedido> atualizarPeloId(@PathVariable("id") Long id, @RequestBody Pedido pedido) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(pedidoService.atualizarPedido(id, pedido));
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<Pedido> deletarPeloId(@PathVariable("id") Long id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(pedidoService.deletarPedido(id));
     }
 }

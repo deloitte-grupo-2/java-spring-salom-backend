@@ -41,12 +41,10 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic().disable()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/usuario/cadastrar", "/usuario/logar","/swagger-ui.html" ).permitAll()
+                .antMatchers("/usuario/cadastrar", "/usuario/logar", "/swagger-ui.html").permitAll()
 //                .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().cors();
-
-
     }
 
 }
