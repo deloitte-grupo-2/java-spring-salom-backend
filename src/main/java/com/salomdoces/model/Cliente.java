@@ -37,7 +37,7 @@ public class Cliente implements Serializable  {
     // Relacionamento mapeado pelo nome da tabela
     // Integridade referencial: quando um cliente é excluído,
     // os endereços e telefones associados também serão
-//
+
     @OneToMany (cascade = CascadeType.ALL)
     @JsonIgnoreProperties("cliente")
     private List<Endereco> endereco;
