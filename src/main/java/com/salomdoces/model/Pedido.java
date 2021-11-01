@@ -47,7 +47,7 @@ public class Pedido {
     //Merge é uma operação que copia um estado de um objeto para o objeto persistente com mesmo identificador
 
     //InverseJoinColumn customiza o nome da coluna na tabela da variável de referência de classe associada
-    @ManyToMany(fetch= FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name="pedidos_produtos", joinColumns = {@JoinColumn(name="pedido_id")},
             inverseJoinColumns = {@JoinColumn(name="produto_id")})
     private List<Produto> produtos;
