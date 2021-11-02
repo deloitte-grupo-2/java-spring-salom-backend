@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 
@@ -16,12 +17,20 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+
+    @NotNull
+    @Size(min=2, max=20)
     @Column(name="nome")
     private String nome;
 
+
+    @NotNull
     @Column(name="preco")
     private Double preco;
 
+
+    @Size(min=6, max=100)
     @Column(name="descricao")
     private String descricao;
 

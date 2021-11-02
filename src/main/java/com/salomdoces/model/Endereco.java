@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 
 // Tornando a classe uma entidade gerenciavel
@@ -30,19 +31,28 @@ public class Endereco {
     // Configurando campo para não aceitar valores nulos: endereço sempre será associado a um cliente
 
     // Configurando campo para não aceitar valores nulos
+
     @NotNull
+    @Size(min=4, max=100)
     private String logradouro;
     // Configurando campo para não aceitar valores nulos
+
+
     @NotNull
+    @Size(min=4, max=100)
     private int numero;
     // Complemento pode aceitar valores nulos
+
+    @Size(min=1, max=100)
     private String complemento;
     // Configurando campo para não aceitar valores nulos
     @NotNull
+    @Size(min=8, max=9)
     private String cep;
     // Tipo de telefone: cadastral, entrega, cobrança
     // Configurando campo para não aceitar valores nulos
     @NotNull
+    @Size(min=9, max=11)
     private String tipo;
 
     // Construtor padrão

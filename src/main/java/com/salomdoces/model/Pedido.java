@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import java.util.Date;
 import java.util.List;
@@ -18,12 +19,14 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     //Tiramos os Not Nulls para não evitar um erro recorrente de parse não nulo
     //No momento de validação de campo, podemos forçar que ele esteja preenchido
+    @NotNull
+    @Size(min=5, max=15)
     @Column(name="forma_pagamento")
     private String formaPagamento;
 
+    @Size(min=5, max=30)
     @Column(name="status")
     private String status;
 
@@ -47,9 +50,12 @@ public class Pedido {
     //Merge é uma operação que copia um estado de um objeto para o objeto persistente com mesmo identificador
 
     //InverseJoinColumn customiza o nome da coluna na tabela da variável de referência de classe associada
+
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinTable(name="pedidos_produtos", joinColumns = {@JoinColumn(name="pedido_id")},
             inverseJoinColumns = {@JoinColumn(name="produto_id")})
+    @NotNull
     private List<Produto> produtos;
 
     public Pedido() {

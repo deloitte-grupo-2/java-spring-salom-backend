@@ -38,13 +38,17 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
         // O verbos GET para logar e cadastrar serão permitidos
         // pois não é necessário token para ambos
         // Para as outras requisições, o usuário precisará estar autenticado
-        http.httpBasic().disable()
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/usuario/cadastrar", "/usuario/logar", "/swagger-ui.html").permitAll()
-//                .anyRequest().authenticated()
+        http.authorizeRequests()
+                .antMatchers("/usuario/cadastrar", "/usuario/logar"
+                        , "/swagger-ui.html", "/v2/api-docs", "/swagger-resources/configuration/ui",
+                        "/swagger-resources", "/swagger-resources/configuration/security",
+                        "/webjars/**").permitAll()
+                .anyRequest().authenticated()
+                .and().httpBasic()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().cors();
+                .and().cors()
+                .and().csrf().disable();
+
     }
 
 }
