@@ -39,6 +39,7 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
         // pois não é necessário token para ambos
         // Para as outras requisições, o usuário precisará estar autenticado
         http.authorizeRequests()
+
                 .antMatchers("/usuario/cadastrar", "/usuario/logar"
                         , "/swagger-ui.html", "/v2/api-docs", "/swagger-resources/configuration/ui",
                         "/swagger-resources", "/swagger-resources/configuration/security",
@@ -51,4 +52,9 @@ public class BasicSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
+
+
 }
+
+
+
