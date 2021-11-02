@@ -43,6 +43,10 @@ public class Pedido {
     @ManyToOne
     private Cliente cliente;
 
+    @NotNull
+    @Column(name="preco_total")
+    private Double precoTotal;
+
     //Um pedido pode ter muitos produtos, e um produto pode estar em vários pedidos
     //Fetch informa a forma pela qual os dados serão carregados do banco
     //Fetch Eager carrega os dados do banco independete se serão utilizados no momento
@@ -107,6 +111,14 @@ public class Pedido {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public Double getPrecoTotal() {
+        return precoTotal;
+    }
+
+    public void setPrecoTotal(Double precoTotal) {
+        this.precoTotal = precoTotal;
     }
 
     public List<Produto> getProdutos() {

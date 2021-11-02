@@ -39,7 +39,6 @@ public class Endereco {
 
 
     @NotNull
-    @Size(min=4, max=100)
     private int numero;
     // Complemento pode aceitar valores nulos
 
@@ -64,13 +63,7 @@ public class Endereco {
         return id;
     }
 
-//    public Cliente getCliente() {
-//        return cliente;
-//    }
-//
-//    public void setCliente(Cliente cliente) {
-//        this.cliente = cliente;
-//    }
+
 
     public void setId(Long id) {
         this.id = id;
