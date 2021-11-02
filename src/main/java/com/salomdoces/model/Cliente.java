@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.List;
 
@@ -29,8 +30,10 @@ public class Cliente implements Serializable  {
     private Long id;
     // Configurando campo para não aceitar valores nulos
     @NotNull
+    @Size(min=2, max=100)
     private String nome;
     // Configurando campo para não aceitar valores nulos
+    @Size(min=11, max=14)
     private String cpf;
     // endereco: Será um atributo multivalorado do tipo Endereco
     // Definindo cardinalidade (um cliente pode ter muitos endereços e telefones)
@@ -47,8 +50,13 @@ public class Cliente implements Serializable  {
     private List<Telefone> telefone;
     // Configurando campos para usuário
     // Configurando campos para não aceitar valores nulos
+
     @NotNull
+    @Size(min=6, max=100)
+
     private String email;
+
+    @NotNull
     private String senha;
 
     @OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)

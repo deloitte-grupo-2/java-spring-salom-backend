@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-
+import javax.validation.constraints.Size;
 
 
 // Tornando a classe uma entidade gerenciavel
@@ -35,14 +35,18 @@ public class Telefone {
 //    @NotNull
 //    private Cliente cliente;
 //    // Configurando campo para não aceitar valores nulos
+
     @NotNull
+    @Size(min=2,max=5)
     private String ddd;
     // Configurando campo para não aceitar valores nulos
     @NotNull
+    @Size(min=8,max=10)
     private String numero;
     // Tipo de telefone: residencial, comercial, celular
     // Configurando campo para não aceitar valores nulos
     @NotNull
+    @Size(min=9,max=11)
     private String tipo;
 
     // Construtor padrão
