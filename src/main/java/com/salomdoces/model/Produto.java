@@ -29,9 +29,6 @@ public class Produto {
     @Column(name="preco")
     private Double preco;
 
-    @NotNull
-    @Column(name="quantidade")
-    private Integer quantidade;
 
     @Size(min=6, max=100)
     @Column(name="descricao")
@@ -40,12 +37,6 @@ public class Produto {
     @Column(name="imagemUrl")
     private String imagemUrl;
 
-
-    //Um pedido pode ter muitos produtos, e um produto pode estar em vários pedidos
-    //Fetch informa a forma pela qual os dados serão carregados do banco
-    //Fetch Lazy carrega os dados do banco apenas quando eles são explicitamente pedidos
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "produtos")
-    private List<Pedido> pedidos;
 
     public Produto() {
     }
@@ -74,14 +65,6 @@ public class Produto {
         this.preco = preco;
     }
 
-    public Integer getQuantidade() {
-        return quantidade;
-    }
-
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
-
     public String getDescricao() {
         return descricao;
     }
@@ -96,13 +79,5 @@ public class Produto {
 
     public void setImagemUrl(String imagemUrl) {
         this.imagemUrl = imagemUrl;
-    }
-
-    public List<Pedido> getPedidos() {
-        return pedidos;
-    }
-
-    public void setPedidos(List<Pedido> pedidos) {
-        this.pedidos = pedidos;
     }
 }

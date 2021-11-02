@@ -36,9 +36,13 @@ public class PedidoService {
         if (pedido.getDataEntrega() != null) {
             atualizandoPedido.setDataEntrega(pedido.getDataEntrega());
         }
-        if (pedido.getProdutos() != null) {
-            atualizandoPedido.setProdutos(pedido.getProdutos());
+        if(pedido.getItens() != null){
+            atualizandoPedido.setItens(pedido.getItens());
         }
+        if(pedido.getPrecoTotal() != null){
+            atualizandoPedido.setPrecoTotal(pedido.getPrecoTotal());
+        }
+
         Pedido pedidoAtualizado = this.pedidoRepository.save(atualizandoPedido);
         return pedidoAtualizado;
     }
