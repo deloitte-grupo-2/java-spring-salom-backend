@@ -47,20 +47,15 @@ public class Pedido {
     @Column(name="preco_total")
     private Double precoTotal;
 
-    //Um pedido pode ter muitos produtos, e um produto pode estar em vários pedidos
     //Fetch informa a forma pela qual os dados serão carregados do banco
     //Fetch Eager carrega os dados do banco independete se serão utilizados no momento
 
     //Merge é uma operação que copia um estado de um objeto para o objeto persistente com mesmo identificador
 
-    //InverseJoinColumn customiza o nome da coluna na tabela da variável de referência de classe associada
 
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-    @JoinTable(name="pedidos_produtos", joinColumns = {@JoinColumn(name="pedido_id")},
-            inverseJoinColumns = {@JoinColumn(name="produto_id")})
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @NotNull
-    private List<Produto> produtos;
+    private List<ItemPedido> itens;
 
     public Pedido() {
     }
@@ -121,11 +116,11 @@ public class Pedido {
         this.precoTotal = precoTotal;
     }
 
-    public List<Produto> getProdutos() {
-        return produtos;
+    public List<ItemPedido> getItens() {
+        return itens;
     }
 
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setItens(List<ItemPedido> itens) {
+        this.itens = itens;
     }
 }
