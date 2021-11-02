@@ -29,6 +29,9 @@ public class Produto {
     @Column(name="preco")
     private Double preco;
 
+    @NotNull
+    @Column(name="quantidade")
+    private Integer quantidade;
 
     @Size(min=6, max=100)
     @Column(name="descricao")
@@ -69,6 +72,14 @@ public class Produto {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public Integer getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
     }
 
     public String getDescricao() {
