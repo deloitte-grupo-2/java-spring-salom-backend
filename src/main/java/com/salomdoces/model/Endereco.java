@@ -37,7 +37,6 @@ public class Endereco {
     private String logradouro;
     // Configurando campo para não aceitar valores nulos
 
-
     @NotNull
     private int numero;
     // Complemento pode aceitar valores nulos

@@ -44,6 +44,7 @@ public class Cliente implements Serializable  {
     @OneToMany (cascade = CascadeType.ALL)
     @JsonIgnoreProperties("endereco")
     private List<Endereco> endereco;
+
     // telefone: Será um atributo multivalorado do tipo Telefone
     @OneToMany(cascade = CascadeType.ALL)
     @JsonIgnoreProperties("telefone")

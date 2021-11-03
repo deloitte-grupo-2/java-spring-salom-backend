@@ -32,7 +32,6 @@ public class Produto {
     @Column(name="imagemUrl")
     private String imagemUrl;
 
-
     public Produto() {
     }
 
