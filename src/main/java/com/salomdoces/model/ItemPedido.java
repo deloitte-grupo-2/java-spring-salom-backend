@@ -10,6 +10,8 @@ import javax.validation.constraints.NotNull;
 @Table(name ="item_pedido")
 public class ItemPedido {
 
+    //JPA Entity
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

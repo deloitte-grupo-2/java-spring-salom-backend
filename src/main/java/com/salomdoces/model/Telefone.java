@@ -14,6 +14,8 @@ import javax.validation.constraints.Size;
 @Table(name="telefone")
 public class Telefone {
 
+    //JPA Entity
+
     // Atributos encapsulados da classe
     // Declarando ID com Wrapper Class
     // (parâmetros das interfaces das classes de persistência de dados)

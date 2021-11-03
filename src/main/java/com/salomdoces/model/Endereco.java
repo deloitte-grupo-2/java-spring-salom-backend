@@ -13,6 +13,7 @@ import javax.validation.constraints.Size;
 // Definindo o nome da entidade como "endereco" no banco de dados
 @Table(name="endereco")
 public class Endereco {
+    //JPA Entity
 
     // Atributos encapsulados da classe
 

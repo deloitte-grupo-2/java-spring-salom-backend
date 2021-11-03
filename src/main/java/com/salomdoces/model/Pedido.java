@@ -14,6 +14,8 @@ import java.util.List;
 @Table(name="pedido")
 public class Pedido {
 
+    //JPA Entity
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
