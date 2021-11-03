@@ -11,7 +11,6 @@ import java.util.List;
 
 
 @Entity
-@JsonIgnoreProperties("produto")
 @Table(name="pedido")
 public class Pedido {
 
@@ -52,9 +51,9 @@ public class Pedido {
 
     //Merge é uma operação que copia um estado de um objeto para o objeto persistente com mesmo identificador
 
-
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @NotNull
+    @JsonIgnoreProperties("item_pedido")
     private List<ItemPedido> itens;
 
     public Pedido() {

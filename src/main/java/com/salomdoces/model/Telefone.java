@@ -15,7 +15,6 @@ import javax.validation.constraints.Size;
 public class Telefone {
 
     // Atributos encapsulados da classe
-
     // Declarando ID com Wrapper Class
     // (parâmetros das interfaces das classes de persistência de dados)
     // Definindo ID como Chave Primária (PK)
@@ -48,6 +47,10 @@ public class Telefone {
     @NotNull
     @Size(min=9,max=11)
     private String tipo;
+
+    @ManyToOne
+    @JsonIgnoreProperties("cliente")
+    private Cliente cliente;
 
     // Construtor padrão
     public Telefone() { }

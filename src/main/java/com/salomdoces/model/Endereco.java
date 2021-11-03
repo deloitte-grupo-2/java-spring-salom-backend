@@ -37,7 +37,6 @@ public class Endereco {
     private String logradouro;
     // Configurando campo para não aceitar valores nulos
 
-
     @NotNull
     private int numero;
     // Complemento pode aceitar valores nulos
@@ -53,6 +52,10 @@ public class Endereco {
     @NotNull
     @Size(min=2, max=30)
     private String apelido;
+
+    @ManyToOne
+    @JsonIgnoreProperties("cliente")
+    private Cliente cliente;
 
     // Construtor padrão
     public Endereco() {

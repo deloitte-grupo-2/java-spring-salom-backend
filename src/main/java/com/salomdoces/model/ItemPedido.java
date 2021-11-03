@@ -7,7 +7,6 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@JsonIgnoreProperties({"produto", "pedido"})
 @Table(name ="item_pedido")
 public class ItemPedido {
 
@@ -20,9 +19,11 @@ public class ItemPedido {
     private Integer quantidade;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("pedido")
     private Pedido pedido;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("produto")
     private Produto produto;
 
     public ItemPedido() {
@@ -59,4 +60,5 @@ public class ItemPedido {
     public void setProduto(Produto produto) {
         this.produto = produto;
     }
+
 }

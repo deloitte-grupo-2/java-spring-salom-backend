@@ -9,7 +9,6 @@ import java.util.List;
 
 
 @Entity
-@JsonIgnoreProperties("pedido")
 @Table(name="produto")
 public class Produto {
 
@@ -17,18 +16,14 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
-
     @NotNull
     @Size(min=2, max=20)
     @Column(name="nome")
     private String nome;
 
-
     @NotNull
     @Column(name="preco")
     private Double preco;
-
 
     @Size(min=6, max=100)
     @Column(name="descricao")
@@ -36,7 +31,6 @@ public class Produto {
 
     @Column(name="imagemUrl")
     private String imagemUrl;
-
 
     public Produto() {
     }
