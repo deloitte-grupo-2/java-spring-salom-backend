@@ -42,11 +42,11 @@ public class Cliente implements Serializable  {
     // os endereços e telefones associados também serão
 
     @OneToMany (cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("cliente")
+    @JsonIgnoreProperties("endereco")
     private List<Endereco> endereco;
     // telefone: Será um atributo multivalorado do tipo Telefone
     @OneToMany(cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("cliente")
+    @JsonIgnoreProperties("telefone")
     private List<Telefone> telefone;
     // Configurando campos para usuário
     // Configurando campos para não aceitar valores nulos
@@ -60,7 +60,7 @@ public class Cliente implements Serializable  {
     private String senha;
 
     @OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
-//    @JsonIgnoreProperties("cliente")
+    @JsonIgnoreProperties("pedido")
     private List<Pedido> pedidos;
 
     // Construtor padrão

@@ -54,6 +54,10 @@ public class Endereco {
     @Size(min=9, max=11)
     private String tipo;
 
+    @ManyToOne
+    @JsonIgnoreProperties("cliente")
+    private Cliente cliente;
+
     // Construtor padrão
     public Endereco() {
     }
