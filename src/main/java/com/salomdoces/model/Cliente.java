@@ -18,6 +18,7 @@ import java.util.List;
 // Definindo o nome da entidade como "cliente" no banco de dados
 @Table(name="cliente")
 public class Cliente implements Serializable  {
+    //JPA Entity
 
     // Atributos encapsulados da classe
 
