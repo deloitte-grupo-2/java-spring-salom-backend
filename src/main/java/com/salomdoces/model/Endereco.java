@@ -51,8 +51,8 @@ public class Endereco {
     // Tipo de telefone: cadastral, entrega, cobrança
     // Configurando campo para não aceitar valores nulos
     @NotNull
-    @Size(min=9, max=11)
-    private String tipo;
+    @Size(min=2, max=30)
+    private String apelido;
 
     @ManyToOne
     @JsonIgnoreProperties("cliente")
@@ -107,11 +107,11 @@ public class Endereco {
         this.cep = cep;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getApelido() {
+        return apelido;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setApelido(String apelido) {
+        this.apelido = apelido;
     }
 }
