@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name ="item_pedido")
+@Table(name ="produto_pedido")
 public class ItemPedido {
 
     //JPA Entity
@@ -20,11 +20,11 @@ public class ItemPedido {
     @Column(name="quantidade")
     private Integer quantidade;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("pedido")
     private Pedido pedido;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne
     @JsonIgnoreProperties("produto")
     private Produto produto;
 

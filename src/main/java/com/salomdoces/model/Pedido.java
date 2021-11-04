@@ -12,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name="pedido")
+@JsonIgnoreProperties("cliente")
 public class Pedido {
 
     //JPA Entity
@@ -55,7 +56,7 @@ public class Pedido {
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @NotNull
-    @JsonIgnoreProperties("item_pedido")
+    @JsonIgnoreProperties("itens")
     private List<ItemPedido> itens;
 
     public Pedido() {
