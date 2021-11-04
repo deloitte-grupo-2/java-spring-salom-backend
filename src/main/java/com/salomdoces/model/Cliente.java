@@ -62,7 +62,7 @@ public class Cliente implements Serializable  {
     private String senha;
 
     @OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
-    @JsonIgnoreProperties("pedido")
+    @JsonIgnoreProperties("pedidos")
     private List<Pedido> pedidos;
 
     // Construtor padrão

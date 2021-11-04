@@ -42,6 +42,7 @@ public class Pedido {
     private Date dataEntrega;
 
     @ManyToOne
+    @JsonIgnoreProperties("cliente")
     private Cliente cliente;
 
     @NotNull
