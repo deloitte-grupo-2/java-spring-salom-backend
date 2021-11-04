@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name ="item_pedido")
+@Table(name ="produto_pedido")
 public class ItemPedido {
 
     //JPA Entity

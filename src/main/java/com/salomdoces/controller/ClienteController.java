@@ -114,6 +114,9 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.NOT_ACCEPTABLE).build();
     }
 
+
+
+
     // Consultar Cliente por e-mail
     // Criando método para responder o verbo Get
     // passando o email informado como parâmetro de entrada
