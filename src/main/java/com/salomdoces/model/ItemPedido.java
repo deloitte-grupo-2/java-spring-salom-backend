@@ -20,7 +20,7 @@ public class ItemPedido {
     @Column(name="quantidade")
     private Integer quantidade;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JsonIgnoreProperties("pedido")
     private Pedido pedido;
 
