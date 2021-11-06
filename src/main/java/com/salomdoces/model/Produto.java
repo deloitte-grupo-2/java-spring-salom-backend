@@ -12,14 +12,12 @@ import java.util.List;
 @Table(name="produto")
 public class Produto {
 
-    //JPA Entity
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull
-    @Size(min=2, max=20)
+    @Size(min=2, max=40)
     @Column(name="nome")
     private String nome;
 
