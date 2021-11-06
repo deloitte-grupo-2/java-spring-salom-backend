@@ -50,7 +50,7 @@ public class Telefone {
     @Size(min=9,max=11)
     private String tipo;
 
-    @ManyToOne
+    @OneToOne
     @JsonIgnoreProperties("cliente")
     private Cliente cliente;
 
