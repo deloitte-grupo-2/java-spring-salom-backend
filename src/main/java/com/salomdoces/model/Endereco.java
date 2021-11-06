@@ -54,7 +54,7 @@ public class Endereco {
     @Size(min=2, max=30)
     private String apelido;
 
-    @ManyToOne
+    @OneToOne
     @JsonIgnoreProperties("cliente")
     private Cliente cliente;
 

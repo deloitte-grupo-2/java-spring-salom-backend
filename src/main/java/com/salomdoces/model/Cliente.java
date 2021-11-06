@@ -42,14 +42,14 @@ public class Cliente implements Serializable  {
     // Integridade referencial: quando um cliente é excluído,
     // os endereços e telefones associados também serão
 
-    @OneToMany (cascade = CascadeType.ALL)
+    @OneToOne (cascade = CascadeType.ALL)
     @JsonIgnoreProperties("endereco")
-    private List<Endereco> endereco;
+    private Endereco endereco;
 
     // telefone: Será um atributo multivalorado do tipo Telefone
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
     @JsonIgnoreProperties("telefone")
-    private List<Telefone> telefone;
+    private Telefone telefone;
     // Configurando campos para usuário
     // Configurando campos para não aceitar valores nulos
 
@@ -93,19 +93,19 @@ public class Cliente implements Serializable  {
         this.cpf = cpf;
     }
 
-    public List<Endereco> getEndereco() {
+    public Endereco getEndereco() {
         return endereco;
     }
 
-    public void setEndereco(List<Endereco> endereco) {
+    public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
 
-    public List<Telefone> getTelefone() {
+    public Telefone getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(List<Telefone> telefone) {
+    public void setTelefone(Telefone telefone) {
         this.telefone = telefone;
     }
 
